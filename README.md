@@ -1,2 +1,1 @@
-# LifeInObjects
-TODO:: Documentation
+# Life In Objects
