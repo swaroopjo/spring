@@ -28,20 +28,18 @@ Initializer will create tow threads (listener and sender) and starts them.
 
 1. Listener: 
 
-Listener is configured to use rabbit-listener-context.xml which contains the Rabbit Server connection configuration. 
-
+  Listener is configured to use rabbit-listener-context.xml which contains the Rabbit Server connection configuration. 
 For now there is only one Listener (RsvpListener) that listens to the messages whose Routing key starts with "rsvp"
-
 RabbitMQ FEED-EXCHANGE will look at the routing pattern and forwards the message to appropriate Listener. 
 
 2. Sender: 
 
-Sender is configured to use rabbit-sender.xml which contains the Server configuration and the exchange name that the message needs to be forarded to. 
+  Sender is configured to use rabbit-sender.xml which contains the Server configuration and the exchange name that the message needs to be forarded to. 
 RsvpDataExtractor will create a new thread that makes a http web service call to the http://stream.meetup.com/2/rsvps to pull the data which is added to the BlockingQueue. The DataExctractor polls the Queue for new Data and puclishes the message to the FEED-EXCHANGE. 
 
 3. MongoDB: 
 
-RsvpDao is configured to use mongo-context for database configuration. Currently it supports only Create operation (in CRUD). The listener's onMessage method is called when the new message is recieved. This message is stored in MongoDB as is. 
+  RsvpDao is configured to use mongo-context for database configuration. Currently it supports only Create operation (in CRUD). The listener's onMessage method is called when the new message is recieved. This message is stored in MongoDB as is. 
 
 Conclusion: 
 
