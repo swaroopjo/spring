@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	
+	<!-- Declare Lucene Version Constant -->
+	<util:constant id="LUCENE_VERSION" static-field="org.apache.lucene.util.Version.LUCENE_40" />
+	
+	<!-- Use properties file to locate the temp file location -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  <property name="location">
+    <value>classpath:lucene.properties</value>
+  </property>
+</bean>
+
+
+<!-- set your analyzer, to be used by the IndexWriter and QueryParser -->
+<bean id="luceneAnalyzer" class="org.apache.lucene.analysis.standard.StandardAnalyzer">
+  <constructor-arg ref="LUCENE_VERSION"/>
+</bean>
+	
+	<!-- Index Writer Config is used by the IndexWriter -->
+	<bean id="indexWriterConfig" class="org.apache.lucene.index.IndexWriterConfig">
+		<constructor-arg ref="LUCENE_VERSION"/>
+		<constructor-arg ref="luceneAnalyzer"/>
+	</bean>
+	
+	<bean id="indexDirectory" class="org.apache.lucene.store.SimpleFSDirectory">
+		<constructor-arg>
+   			 <bean class="java.io.File">
+    	  <constructor-arg value="${tempDir}" />
+    </bean>
+  </constructor-arg>
+	</bean>
+	
+	<bean id="indexWriter" class="org.apache.lucene.index.IndexWriter">
+		<constructor-arg ref="indexDirectory"/>
+		<constructor-arg ref="indexWriterConfig"/>
+	</bean>
+	
+	
+</beans> 	
+
+
