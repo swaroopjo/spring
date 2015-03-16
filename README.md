@@ -1,1 +1,2 @@
-# Life In Objects
+# Spring Integration Projects
+
