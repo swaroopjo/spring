@@ -14,4 +14,7 @@ When searching for an order
 2. Query the index get the ID. 
 3. Hit the database and get the Real Object. 
 
+HyperSql In memory is faster than an actual mysql database? 
+Use Lucene Jdbc support for storing th eindex files. 
+http://mprabhat.com/2012/08/13/create-lucene-index-in-database-using-jdbcdirectory/
 
