@@ -1,0 +1,17 @@
+#Lucene and HSQL DB
+
+Create an application that uses Lucene Index for fast search and HSQL for In memory DB.
+
+Initialize the Lucene Index Writer for each table in the database and the relationships 
+Customer Table --> create Customer Lucene Index file. /Bitset Directory
+Order Table --> Create Order Lucene Index File. /Bitset Directory
+Create Index File for Customer-Order Records. /Relation Directory
+
+Store the Index Objects in HiperSql-In Memory as Blob data. http://javapapers.com/core-java/serialize-de-serialize-java-object-from-database/
+
+When searching for an order 
+1. Get the appropriate index Object from the Hsql
+2. Query the index get the ID. 
+3. Hit the database and get the Real Object. 
+
+
