@@ -1,0 +1,3 @@
+<div>
+	Copyright
+</div>
