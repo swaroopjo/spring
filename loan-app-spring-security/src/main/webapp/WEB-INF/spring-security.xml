@@ -33,7 +33,7 @@
 			logout-url="/logout"/>
 	</http>
 	
-	<beans:bean id="databaseUserAuthService" class="com.lio.service.DatabaseUserAuthService"/>
+	<beans:bean id="databaseUserAuthService" class="com.lio.loan.service.DatabaseUserAuthService"/>
 	
 	<authentication-manager>
 	        <authentication-provider user-service-ref="databaseUserAuthService">
